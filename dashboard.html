@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5faf6" />
+    <title>ERLY | Your Discord servers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dashboard-page server-list-page">
+    <header class="server-list-header">
+      <a class="home-brand" href="/" aria-label="ERLY home">
+        <span class="brand-mark">E</span>
+        <span class="brand-name">ERLY</span>
+      </a>
+      <div class="signed-in-user">
+        <span class="user-avatar" data-discord-avatar>•</span>
+        <div class="signed-in-details">
+          <span data-discord-username>Discord user</span>
+          <span class="signed-in-handle" data-discord-handle>Loading username…</span>
+          <span class="signed-in-email" data-discord-email>Loading email…</span>
+        </div>
+        <a class="logout-link" href="/auth/logout">Sign out</a>
+      </div>
+    </header>
+
+    <main class="server-list-main">
+      <section class="server-list-section" aria-labelledby="server-list-title">
+        <div data-server-selection>
+          <div class="server-list-heading">
+            <div>
+              <p class="top-label">ERLY · ER:LC community management</p>
+              <h1 id="server-list-title">Choose a server</h1>
+              <p class="section-subtitle">Choose a Discord server to connect ERLY and verify its ER:LC private server.</p>
+            </div>
+            <button class="ghost-btn small-btn" type="button" data-refresh-guilds>Refresh list</button>
+          </div>
+          <p class="guild-list-message" data-guild-list-message aria-live="polite">Loading your Discord servers…</p>
+          <div class="guild-grid" data-guild-list>
+            <section class="guild-column" aria-labelledby="guilds-missing-title">
+              <div class="guild-column-heading">
+                <div>
+                  <h2 id="guilds-missing-title">ERLY bot not added</h2>
+                  <p>Servers where you can add ERLY.</p>
+                </div>
+                <span class="guild-column-count" data-guild-count="missing">0</span>
+              </div>
+              <div class="guild-column-list" data-guild-column="missing"></div>
+            </section>
+            <section class="guild-column" aria-labelledby="guilds-present-title">
+              <div class="guild-column-heading">
+                <div>
+                  <h2 id="guilds-present-title">ERLY bot is a member</h2>
+                  <p>Servers already connected to ERLY.</p>
+                </div>
+                <span class="guild-column-count" data-guild-count="present">0</span>
+              </div>
+              <div class="guild-column-list" data-guild-column="present"></div>
+            </section>
+          </div>
+        </div>
+        <section class="panel discord-server-profile" data-server-profile hidden aria-labelledby="profile-server-name">
+          <div class="discord-server-banner" data-profile-banner hidden></div>
+          <div class="discord-profile-heading">
+            <img class="discord-profile-icon" data-profile-icon alt="" hidden />
+            <span class="discord-profile-icon guild-icon-fallback" data-profile-icon-fallback></span>
+            <div>
+              <p class="top-label">Discord server</p>
+              <h2 id="profile-server-name" data-profile-name></h2>
+            </div>
+          </div>
+          <p class="discord-profile-description" data-profile-description></p>
+          <dl class="discord-profile-stats">
+            <div><dt>Members</dt><dd data-profile-members></dd></div>
+            <div><dt>Online</dt><dd data-profile-online></dd></div>
+            <div><dt>Boosts</dt><dd data-profile-boosts></dd></div>
+            <div><dt>Created</dt><dd data-profile-created></dd></div>
+            <div><dt>Verification</dt><dd data-profile-verification></dd></div>
+            <div><dt>Locale</dt><dd data-profile-locale></dd></div>
+          </dl>
+          <p class="discord-profile-features" data-profile-features></p>
+          <p class="setup-form-message" data-profile-message aria-live="polite">Is this the Discord server you want to connect?</p>
+          <div class="approval-actions">
+            <button class="primary-btn small-btn" type="button" data-confirm-discord>Yes, this is my server</button>
+            <button class="ghost-btn small-btn" type="button" data-reject-discord>No, choose another</button>
+          </div>
+        </section>
+
+        <section class="panel management-panel" data-management-panel hidden aria-labelledby="management-title">
+          <div class="panel-header management-panel-header">
+            <div>
+              <p class="top-label">ERLY · Connected server</p>
+              <h2 id="management-title" data-management-server-name></h2>
+            </div>
+            <a class="primary-btn small-btn map-launch-link" href="/map.html">Open map simulation</a>
+          </div>
+          <dl class="discord-profile-stats erlc-server-details">
+            <div><dt>Discord server</dt><dd data-management-discord-name></dd></div>
+            <div><dt>Roblox server owner</dt><dd data-management-owner></dd></div>
+            <div><dt>ER:LC join code</dt><dd data-management-join-code></dd></div>
+          </dl>
+          <section class="management-categories" aria-labelledby="categories-title">
+            <h3 id="categories-title">Server management</h3>
+            <p>Choose a category to manage this connected server.</p>
+            <div class="management-category-grid">
+              <a class="management-category" href="/configuration.html">
+                <span class="management-category-icon" aria-hidden="true">⚙</span>
+                <span class="management-category-copy"><strong>Server settings</strong><small>Manage server preferences</small></span>
+                <span class="management-category-arrow" aria-hidden="true">›</span>
+              </a>
+              <button class="management-category" type="button" data-open-ingame-config>
+                <span class="management-category-icon" aria-hidden="true">⌘</span>
+                <span class="management-category-copy"><strong>ERLC Configurations</strong><small>Configure in-game properties</small></span>
+                <span class="management-category-arrow" aria-hidden="true">›</span>
+              </button>
+              <button class="management-category" type="button" data-open-session-dialog>
+                <span class="management-category-icon" aria-hidden="true">◷</span>
+                <span class="management-category-copy"><strong>Session management</strong><small>Channel, player graph, and session notices</small></span>
+                <span class="management-category-arrow" aria-hidden="true">›</span>
+              </button>
+              <div class="management-category" aria-label="Server Roles, coming soon">
+                <span class="management-category-icon" aria-hidden="true">♟</span>
+                <span class="management-category-copy"><strong>Server Roles</strong><small>Coming soon</small></span>
+              </div>
+              <div class="management-category" aria-label="Staff Shifts, coming soon">
+                <span class="management-category-icon" aria-hidden="true">◷</span>
+                <span class="management-category-copy"><strong>Staff Shifts</strong><small>Coming soon</small></span>
+              </div>
+              <div class="management-category" aria-label="In-game Logs, coming soon">
+                <span class="management-category-icon" aria-hidden="true">☷</span>
+                <span class="management-category-copy"><strong>In-game Logs</strong><small>Coming soon</small></span>
+              </div>
+              <div class="management-category" aria-label="Discord Audit Logs, coming soon">
+                <span class="management-category-icon" aria-hidden="true">▤</span>
+                <span class="management-category-copy"><strong>Discord Audit Logs</strong><small>Coming soon</small></span>
+              </div>
+            </div>
+            <div class="management-config-bar">
+              <span data-config-status>Configure the welcome message players receive when they join.</span>
+              <a class="primary-btn small-btn" href="/configuration.html">Configure in-game properties</a>
+            </div>
+            <p class="setup-form-message" data-welcome-delivery-error aria-live="polite" hidden></p>
+          </section>
+          <section class="session-dashboard" data-session-dashboard hidden aria-labelledby="session-dashboard-title">
+            <div class="session-dashboard-heading">
+              <div>
+                <h3 id="session-dashboard-title">Session management</h3>
+                <p>Notifications: <strong data-session-channel-name>No channel selected</strong></p>
+              </div>
+              <button class="ghost-btn small-btn" type="button" data-refresh-session-metrics>Refresh graph</button>
+            </div>
+            <div class="session-player-summary">
+              <span>Unique players in available join logs</span>
+              <strong data-unique-player-count>—</strong>
+            </div>
+            <div class="session-range-controls" role="group" aria-label="Player graph date range">
+              <button class="session-range-button" type="button" data-session-range="90d" aria-pressed="false">90 days</button>
+              <button class="session-range-button" type="button" data-session-range="60d" aria-pressed="false">60 days</button>
+              <button class="session-range-button" type="button" data-session-range="7d" aria-pressed="false">7 days</button>
+              <button class="session-range-button active" type="button" data-session-range="1h" aria-pressed="true">1 hour</button>
+            </div>
+            <p class="session-chart-message" data-session-chart-message aria-live="polite"></p>
+            <svg class="session-chart" data-session-chart viewBox="0 0 720 240" role="img" aria-label="Unique player count over the selected date range"></svg>
+            <div class="session-action-buttons">
+              <button class="primary-btn small-btn" type="button" data-session-action="start">Session start</button>
+              <button class="ghost-btn small-btn" type="button" data-session-action="low">Session Low</button>
+              <button class="ghost-btn small-btn" type="button" data-session-action="full">Session Full</button>
+              <button class="ghost-btn small-btn" type="button" data-session-action="shutdown">Session Shutdown</button>
+            </div>
+            <p class="setup-form-message" data-session-action-message aria-live="polite"></p>
+          </section>
+        </section>
+      </section>
+    </main>
+    <dialog class="setup-dialog" data-erlc-key-dialog aria-labelledby="erlc-key-title">
+      <form class="setup-dialog-content" data-erlc-key-form>
+        <div class="map-dialog-header">
+          <strong id="erlc-key-title">Connect your ER:LC server</strong>
+          <button class="map-dialog-close" type="button" data-close-key-dialog aria-label="Close dialog">×</button>
+        </div>
+        <div class="setup-dialog-body">
+          <p class="section-subtitle">Enter your ER:LC private server API key. ERLY keeps it server-side for this sign-in session so it can monitor player joins and send your configured private messages.</p>
+          <label>ER:LC API key
+            <input name="serverApiKey" type="password" autocomplete="off" required maxlength="300" placeholder="Paste your private server API key" />
+          </label>
+          <p class="setup-form-message" data-setup-message aria-live="polite"></p>
+          <button class="primary-btn setup-submit" type="submit" data-verify-erlc>Verify ER:LC server</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="setup-dialog" data-erlc-confirm-dialog aria-labelledby="erlc-confirm-title">
+      <div class="setup-dialog-content">
+        <div class="map-dialog-header">
+          <strong id="erlc-confirm-title">Confirm ER:LC server</strong>
+          <button class="map-dialog-close" type="button" data-close-erlc-confirm aria-label="Close dialog">×</button>
+        </div>
+        <div class="setup-dialog-body">
+          <p class="section-subtitle">ERLY verified these details using the ER:LC API. Is this the right server?</p>
+          <dl class="discord-profile-stats erlc-server-details">
+            <div><dt>Server name</dt><dd data-confirm-server-name></dd></div>
+            <div><dt>Roblox owner</dt><dd data-confirm-owner></dd></div>
+            <div><dt>Join code</dt><dd data-confirm-join-code></dd></div>
+          </dl>
+          <p class="setup-form-message" data-confirm-message aria-live="polite"></p>
+          <div class="approval-actions">
+            <button class="primary-btn small-btn" type="button" data-confirm-erlc>Yes, that's right</button>
+            <button class="ghost-btn small-btn" type="button" data-reject-erlc>No, go back</button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+    <dialog class="setup-dialog" data-ingame-config-dialog aria-labelledby="ingame-config-title">
+      <form class="setup-dialog-content" data-ingame-config-form>
+        <div class="map-dialog-header">
+          <strong id="ingame-config-title">Configure in-game properties</strong>
+          <button class="map-dialog-close" type="button" data-close-ingame-config aria-label="Close dialog">×</button>
+        </div>
+        <div class="setup-dialog-body">
+          <section data-config-step="welcome">
+            <p class="section-subtitle">Write a private welcome message. ERLY will send it with the ER:LC <code>:pm</code> command when a player joins.</p>
+            <label>Welcome message
+              <textarea name="welcomeMessage" required maxlength="500" rows="4" placeholder="Welcome to the server!"></textarea>
+            </label>
+            <button class="primary-btn setup-submit" type="button" data-config-next>Confirm welcome message</button>
+          </section>
+          <section data-config-step="name" hidden>
+            <p class="section-subtitle">Choose the name ERLY should show for this server on the website.</p>
+            <label>Website server name
+              <input name="displayName" type="text" autocomplete="off" placeholder="My ER:LC server" />
+            </label>
+            <div class="approval-actions">
+              <button class="ghost-btn small-btn" type="button" data-config-back>Back</button>
+              <button class="primary-btn small-btn" type="submit" data-save-ingame-config>Save server name</button>
+            </div>
+          </section>
+          <p class="setup-form-message" data-ingame-config-message aria-live="polite"></p>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="setup-dialog" data-session-channel-dialog aria-labelledby="session-channel-title">
+      <form class="setup-dialog-content" data-session-channel-form>
+        <div class="map-dialog-header">
+          <strong id="session-channel-title">Session management settings</strong>
+          <button class="map-dialog-close" type="button" data-close-session-dialog aria-label="Close dialog">×</button>
+        </div>
+        <div class="setup-dialog-body">
+          <p class="section-subtitle">Choose the text or announcement channel where ERLY should post session updates.</p>
+          <label>Session notification channel
+            <select name="sessionChannelId" required>
+              <option value="">Loading server channels…</option>
+            </select>
+          </label>
+          <p class="setup-form-message" data-session-channel-message aria-live="polite"></p>
+          <div class="approval-actions">
+            <button class="ghost-btn small-btn" type="button" data-cancel-session-dialog>Cancel</button>
+            <button class="primary-btn small-btn" type="submit" data-save-session-channel>Save channel</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+    <div class="toast" role="status" aria-live="polite"></div>
+    <footer class="legal-footer">
+      <span>© ERLY</span>
+      <nav aria-label="Legal information">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms &amp; Conditions</a>
+      </nav>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

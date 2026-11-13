@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ERLY | Servers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dashboard-page">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-mark">E</div>
+          <div>
+            <span class="brand-name">ERLY</span>
+            <small>Platform</small>
+          </div>
+        </div>
+
+        <nav class="side-nav">
+          <a class="nav-item" href="dashboard.html"><span class="nav-icon">⌂</span>Overview</a>
+          <a class="nav-item active" href="servers.html"><span class="nav-icon">▣</span>Servers</a>
+          <a class="nav-item" href="insights.html"><span class="nav-icon">◎</span>Insights</a>
+          <a class="nav-item" href="dashboard.html#logs"><span class="nav-icon">◫</span>Logs</a>
+          <a class="nav-item" href="dashboard.html#settings"><span class="nav-icon">⚙</span>Settings</a>
+        </nav>
+
+        <div class="sidebar-card">
+          <div class="card-head">
+            <span class="label">System status</span>
+            <span class="status-pill live">Live</span>
+          </div>
+          <div class="status-grid">
+            <div><strong>128</strong><span>Servers</span></div>
+            <div><strong>06</strong><span>Regions</span></div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content-panel">
+        <header class="topbar">
+          <div>
+            <p class="top-label">Infrastructure</p>
+            <h1>Servers</h1>
+          </div>
+          <div class="top-actions">
+            <button class="ghost-btn small-btn">Add server</button>
+            <button class="primary-btn small-btn">Deploy</button>
+          </div>
+        </header>
+
+        <section class="stats-grid">
+          <article class="stat-card accent">
+            <span class="stat-label">Healthy</span>
+            <strong>104</strong>
+            <small>Running normally</small>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Warning</span>
+            <strong>18</strong>
+            <small>Threshold risks</small>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Critical</span>
+            <strong>06</strong>
+            <small>Requires action</small>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Scheduled</span>
+            <strong>12</strong>
+            <small>Deploy windows</small>
+          </article>
+        </section>
+
+        <section class="panel server-panel">
+          <div class="panel-header">
+            <h3>Cluster overview</h3>
+            <button class="ghost-btn small-btn">Filter</button>
+          </div>
+
+          <div class="server-list">
+            <div class="server-row">
+              <div class="server-meta">
+                <span class="server-dot online"></span>
+                <div><strong>prod-us-east-01</strong><small>API / web</small></div>
+              </div>
+              <div class="server-metrics"><span>41% CPU</span><span>63% RAM</span><span>10 ms ping</span></div>
+              <span class="status-pill good">Healthy</span>
+            </div>
+            <div class="server-row">
+              <div class="server-meta">
+                <span class="server-dot online"></span>
+                <div><strong>prod-eu-west-02</strong><small>Workers</small></div>
+              </div>
+              <div class="server-metrics"><span>38% CPU</span><span>58% RAM</span><span>21 ms ping</span></div>
+              <span class="status-pill good">Healthy</span>
+            </div>
+            <div class="server-row">
+              <div class="server-meta">
+                <span class="server-dot warning"></span>
+                <div><strong>staging-nyc-04</strong><small>Queue systems</small></div>
+              </div>
+              <div class="server-metrics"><span>74% CPU</span><span>81% RAM</span><span>34 ms ping</span></div>
+              <span class="status-pill warning">Warning</span>
+            </div>
+            <div class="server-row">
+              <div class="server-meta">
+                <span class="server-dot danger"></span>
+                <div><strong>legacy-ap-south-03</strong><small>Legacy archive</small></div>
+              </div>
+              <div class="server-metrics"><span>92% CPU</span><span>89% RAM</span><span>66 ms ping</span></div>
+              <span class="status-pill danger">Critical</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

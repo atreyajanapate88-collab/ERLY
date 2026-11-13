@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5faf6" />
+    <title>Server configuration | ERLY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dashboard-page server-list-page">
+    <header class="server-list-header">
+      <a class="home-brand" href="/dashboard.html" aria-label="Back to ERLY dashboard">
+        <span class="brand-mark">E</span>
+        <span class="brand-name">ERLY</span>
+      </a>
+      <a class="ghost-btn small-btn" href="/dashboard.html">Back to server</a>
+    </header>
+    <main class="server-list-main">
+      <section class="panel management-panel" aria-labelledby="configuration-title">
+        <p class="top-label">ERLY · Server settings</p>
+        <h1 id="configuration-title">In-game properties</h1>
+        <p class="section-subtitle">Your saved settings are loaded here. Update them and save to return to your server dashboard.</p>
+        <form class="setup-dialog-body" data-server-configuration-form>
+          <label>Website server name
+            <input name="displayName" type="text" autocomplete="off" />
+          </label>
+          <label>Welcome message sent privately to new players
+            <textarea name="welcomeMessage" required rows="4" maxlength="500"></textarea>
+          </label>
+          <dl class="discord-profile-stats erlc-server-details">
+            <div><dt>ER:LC server</dt><dd data-config-erlc-name></dd></div>
+            <div><dt>Discord server</dt><dd data-config-discord-name></dd></div>
+            <div><dt>Roblox server owner</dt><dd data-config-owner></dd></div>
+            <div><dt>ER:LC join code</dt><dd data-config-join-code></dd></div>
+            <div><dt>ER:LC API key</dt><dd data-config-api-key></dd></div>
+          </dl>
+          <p class="setup-form-message" data-config-delivery-status aria-live="polite"></p>
+          <p class="setup-form-message" data-configuration-message aria-live="polite">Loading saved server details…</p>
+          <div class="approval-actions">
+            <button class="primary-btn small-btn" type="submit" data-save-server-configuration disabled>Save and return to server</button>
+            <a class="ghost-btn small-btn" href="/dashboard.html">Cancel</a>
+          </div>
+        </form>
+      </section>
+    </main>
+    <footer class="legal-footer">
+      <span>© ERLY</span>
+      <nav aria-label="Legal information">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms &amp; Conditions</a>
+      </nav>
+    </footer>
+    <script src="configuration.js"></script>
+  </body>
+</html>

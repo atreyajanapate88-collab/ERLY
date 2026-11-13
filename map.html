@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5faf6" />
+    <title>ERLY | City map simulation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="map-page">
+    <header class="map-topbar">
+      <a class="home-brand" href="/dashboard.html" aria-label="Back to server list">
+        <span class="brand-mark">E</span><span class="brand-name">ERLY</span>
+      </a>
+      <div class="map-server-title">
+        <span class="status-dot"></span>
+        <span><strong data-map-server>Verified ER:LC server</strong><small>Original city map simulation · not the live game map</small></span>
+      </div>
+      <a class="ghost-btn small-btn map-back-link" href="/dashboard.html">Server list</a>
+    </header>
+
+    <main class="map-layout">
+      <section class="map-canvas-panel" aria-label="Interactive city map">
+        <div class="map-toolbar">
+          <div class="map-legend">
+            <span><i class="legend-dot unit-police"></i>Police</span>
+            <span><i class="legend-dot unit-fire"></i>Fire / EMS</span>
+            <span><i class="legend-dot incident-dot"></i>Call</span>
+          </div>
+          <div class="map-controls">
+            <button type="button" class="map-control-btn" data-map-zoom-out aria-label="Zoom out">−</button>
+            <button type="button" class="map-control-btn" data-map-zoom-in aria-label="Zoom in">+</button>
+            <button type="button" class="map-control-btn map-reset-btn" data-map-reset>Reset view</button>
+          </div>
+        </div>
+        <div class="map-viewport" data-map-viewport>
+          <svg class="city-map" viewBox="0 0 1200 760" role="img" aria-labelledby="map-title map-description">
+            <title id="map-title">Cedar Valley city simulation map</title>
+            <desc id="map-description">An original fictional roleplay city with a river, bridges, highways, neighborhoods, public safety facilities, and clickable incident and unit markers.</desc>
+            <defs>
+              <pattern id="parkDots" width="18" height="18" patternUnits="userSpaceOnUse">
+                <circle cx="4" cy="5" r="1.5" fill="#87c796" opacity=".6" />
+                <circle cx="13" cy="12" r="1.2" fill="#87c796" opacity=".45" />
+              </pattern>
+              <filter id="markerShadow" x="-60%" y="-60%" width="220%" height="220%">
+                <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#385844" flood-opacity=".22" />
+              </filter>
+            </defs>
+            <g data-map-world>
+              <rect width="1200" height="760" fill="#eaf3e9" />
+              <path d="M0 245 C170 215 240 285 390 260 S630 220 760 278 S1030 315 1200 250 L1200 350 C1015 410 920 360 760 365 S495 365 370 385 S145 340 0 372Z" fill="#b9e2e8" />
+              <path d="M0 245 C170 215 240 285 390 260 S630 220 760 278 S1030 315 1200 250" fill="none" stroke="#a2d4dc" stroke-width="3" />
+              <path d="M0 372 C145 340 245 405 370 385 S600 345 760 365 S1015 410 1200 350" fill="none" stroke="#a2d4dc" stroke-width="3" />
+
+              <path d="M42 35 H440 V190 H42Z M475 38 H715 V188 H475Z M800 34 H1160 V196 H800Z" fill="#d9e8d8" />
+              <path d="M36 420 H280 V705 H36Z M334 430 H535 V700 H334Z M795 430 H1156 V710 H795Z" fill="#dcebd8" />
+              <path d="M42 35 H440 V190 H42Z M475 38 H715 V188 H475Z M800 34 H1160 V196 H800Z M36 420 H280 V705 H36Z M334 430 H535 V700 H334Z M795 430 H1156 V710 H795Z" fill="url(#parkDots)" opacity=".55" />
+
+              <path d="M0 82 H1200 M0 166 H1200 M0 450 H1200 M0 548 H1200 M0 652 H1200" stroke="#d4ded2" stroke-width="20" />
+              <path d="M90 0 V760 M218 0 V760 M345 0 V760 M472 0 V760 M600 0 V760 M728 0 V760 M855 0 V760 M982 0 V760 M1110 0 V760" stroke="#d4ded2" stroke-width="18" />
+              <path d="M0 82 H1200 M0 166 H1200 M0 450 H1200 M0 548 H1200 M0 652 H1200" stroke="#fff" stroke-width="12" />
+              <path d="M90 0 V760 M218 0 V760 M345 0 V760 M472 0 V760 M600 0 V760 M728 0 V760 M855 0 V760 M982 0 V760 M1110 0 V760" stroke="#fff" stroke-width="11" />
+
+              <path d="M-20 720 C180 590 330 720 510 650 S820 560 1010 635 S1150 665 1230 620" fill="none" stroke="#a7b3a5" stroke-width="34" />
+              <path d="M-20 720 C180 590 330 720 510 650 S820 560 1010 635 S1150 665 1230 620" fill="none" stroke="#fdfcf8" stroke-width="24" />
+              <path d="M-20 720 C180 590 330 720 510 650 S820 560 1010 635 S1150 665 1230 620" fill="none" stroke="#e9c779" stroke-width="2" stroke-dasharray="12 12" />
+              <path d="M80 230 L154 390 M555 210 L565 412 M915 255 L900 404" stroke="#92a396" stroke-width="28" />
+              <path d="M80 230 L154 390 M555 210 L565 412 M915 255 L900 404" stroke="#fff" stroke-width="18" />
+
+              <g fill="#d5cec0" stroke="#c1b9aa" stroke-width="2">
+                <rect x="110" y="100" width="74" height="42" rx="5"/><rect x="245" y="100" width="78" height="42" rx="5"/>
+                <rect x="375" y="100" width="45" height="42" rx="5"/><rect x="498" y="102" width="70" height="40" rx="5"/>
+                <rect x="610" y="100" width="70" height="42" rx="5"/><rect x="830" y="96" width="85" height="46" rx="5"/>
+                <rect x="1000" y="95" width="94" height="48" rx="5"/>
+                <rect x="110" y="465" width="74" height="54" rx="5"/><rect x="232" y="470" width="38" height="45" rx="5"/>
+                <rect x="375" y="465" width="68" height="55" rx="5"/><rect x="478" y="470" width="39" height="47" rx="5"/>
+                <rect x="825" y="470" width="86" height="50" rx="5"/><rect x="1000" y="466" width="90" height="52" rx="5"/>
+                <rect x="110" y="565" width="74" height="52" rx="5"/><rect x="375" y="565" width="68" height="50" rx="5"/>
+                <rect x="825" y="565" width="86" height="50" rx="5"/><rect x="1000" y="565" width="90" height="50" rx="5"/>
+              </g>
+
+              <g fill="#c6d9bb" stroke="#a9c49e" stroke-width="2">
+                <rect x="235" y="465" width="35" height="55" rx="5"/><rect x="485" y="475" width="32" height="40" rx="5"/>
+                <rect x="945" y="465" width="36" height="54" rx="5"/><rect x="230" y="565" width="43" height="52" rx="5"/>
+                <rect x="480" y="565" width="38" height="50" rx="5"/><rect x="945" y="565" width="42" height="50" rx="5"/>
+              </g>
+
+              <g class="map-landmarks">
+                <g transform="translate(630 475)">
+                  <rect x="0" y="0" width="126" height="76" rx="9" fill="#e5f3e8" stroke="#83b991" stroke-width="3"/>
+                  <path d="M20 38 H106 M63 12 V64" stroke="#51a565" stroke-width="8" stroke-linecap="round"/>
+                  <text x="63" y="96" text-anchor="middle">Cedar Valley Hospital</text>
+                </g>
+                <g transform="translate(48 482)">
+                  <rect x="0" y="0" width="78" height="62" rx="8" fill="#e3edf8" stroke="#85a6ca" stroke-width="3"/>
+                  <path d="M16 45 L39 13 L62 45Z" fill="#7494b8"/>
+                  <text x="39" y="80" text-anchor="middle">Police HQ</text>
+                </g>
+                <g transform="translate(1040 475)">
+                  <rect x="0" y="0" width="72" height="60" rx="8" fill="#fff0e8" stroke="#e5a487" stroke-width="3"/>
+                  <path d="M36 12 V48 M18 30 H54" stroke="#df7958" stroke-width="8" stroke-linecap="round"/>
+                  <text x="36" y="78" text-anchor="middle">Fire &amp; Rescue</text>
+                </g>
+                <g transform="translate(490 50)">
+                  <rect x="0" y="0" width="206" height="82" rx="9" fill="#f3edda" stroke="#cbbd8c" stroke-width="3"/>
+                  <path d="M25 25 H180 M25 43 H155 M25 61 H170" stroke="#bcae7f" stroke-width="5" stroke-linecap="round"/>
+                  <text x="103" y="101" text-anchor="middle">Civic Center</text>
+                </g>
+                <g transform="translate(810 565)">
+                  <rect x="0" y="0" width="150" height="56" rx="8" fill="#eee7d7" stroke="#c8b997" stroke-width="3"/>
+                  <path d="M22 18 H128 M22 38 H108" stroke="#b7a781" stroke-width="5" stroke-linecap="round"/>
+                  <text x="75" y="76" text-anchor="middle">Riverside Market</text>
+                </g>
+              </g>
+
+              <g class="map-labels">
+                <text x="170" y="210">NORTHGATE</text>
+                <text x="820" y="215">PINE RIDGE</text>
+                <text x="360" y="420">OLD TOWN</text>
+                <text x="865" y="425">CEDAR VALLEY</text>
+                <text x="585" y="310" class="river-label">CEDAR RIVER</text>
+                <text x="305" y="690" class="road-label">STATE ROUTE 8</text>
+                <text x="105" y="38" class="small-map-label">N</text>
+                <path d="M108 45 V70 M108 45 L101 56 M108 45 L115 56" stroke="#53685a" stroke-width="3" fill="none"/>
+              </g>
+
+              <g data-map-markers></g>
+            </g>
+          </svg>
+        </div>
+        <div class="map-bottom-bar"><span><i class="legend-dot unit-police"></i> <b data-unit-count>3</b> units active</span><span><i class="legend-dot incident-dot"></i> <b data-call-count>2</b> calls</span><span class="simulation-note">Simulation only · not connected to Roblox</span></div>
+      </section>
+
+      <aside class="map-side-panel">
+        <section>
+          <p class="top-label">Dispatch</p>
+          <h1>City operations</h1>
+          <p class="map-side-description">Explore the fictional Cedar Valley map. Markers and calls are simulated for this preview.</p>
+        </section>
+        <div class="map-weather-card"><span class="weather-icon">☀</span><span><strong>Clear skies</strong><small>Simulation conditions</small></span><span class="live-pill">SIM</span></div>
+        <section class="dispatch-section">
+          <div class="dispatch-section-heading"><h2>Active calls</h2><span data-call-count-label>2</span></div>
+          <div class="dispatch-list" data-dispatch-list></div>
+          <button type="button" class="dispatch-button" data-create-call>Create simulated call</button>
+        </section>
+        <section class="dispatch-section">
+          <div class="dispatch-section-heading"><h2>Available units</h2><span>3</span></div>
+          <div class="unit-list">
+            <button class="unit-row" type="button" data-focus-unit="unit-pd-12"><i class="legend-dot unit-police"></i><span><strong>PD-12 · Riley</strong><small>Northgate · Available</small></span><b>→</b></button>
+            <button class="unit-row" type="button" data-focus-unit="unit-pd-04"><i class="legend-dot unit-police"></i><span><strong>PD-04 · Jordan</strong><small>Old Town · En route</small></span><b>→</b></button>
+            <button class="unit-row" type="button" data-focus-unit="unit-ems-03"><i class="legend-dot unit-fire"></i><span><strong>EMS-03 · Casey</strong><small>Hospital · Available</small></span><b>→</b></button>
+          </div>
+        </section>
+        <section class="map-selection-card" data-map-selection aria-live="polite">
+          <span class="label">Map selection</span>
+          <strong data-selection-title>Select a marker</strong>
+          <p data-selection-description>Click a unit or call on the map to see its simulation details.</p>
+        </section>
+        <a class="map-back-link-mobile" href="/dashboard.html">← Back to server list</a>
+      </aside>
+    </main>
+    <script src="map.js"></script>
+  </body>
+</html>

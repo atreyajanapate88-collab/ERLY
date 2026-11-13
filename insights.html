@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ERLY | Insights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dashboard-page">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-mark">E</div>
+          <div>
+            <span class="brand-name">ERLY</span>
+            <small>Platform</small>
+          </div>
+        </div>
+
+        <nav class="side-nav">
+          <a class="nav-item" href="dashboard.html"><span class="nav-icon">⌂</span>Overview</a>
+          <a class="nav-item" href="servers.html"><span class="nav-icon">▣</span>Servers</a>
+          <a class="nav-item active" href="insights.html"><span class="nav-icon">◎</span>Insights</a>
+          <a class="nav-item" href="dashboard.html#logs"><span class="nav-icon">◫</span>Logs</a>
+          <a class="nav-item" href="dashboard.html#settings"><span class="nav-icon">⚙</span>Settings</a>
+        </nav>
+
+        <div class="sidebar-card">
+          <div class="card-head">
+            <span class="label">This month</span>
+            <span class="status-pill live">+26%</span>
+          </div>
+          <div class="status-grid">
+            <div><strong>3.1M</strong><span>Requests</span></div>
+            <div><strong>184ms</strong><span>Latency</span></div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content-panel">
+        <header class="topbar">
+          <div>
+            <p class="top-label">Analytics</p>
+            <h1>Insights</h1>
+          </div>
+          <div class="top-actions">
+            <button class="ghost-btn small-btn">Export CSV</button>
+            <button class="primary-btn small-btn">Share report</button>
+          </div>
+        </header>
+
+        <section class="stats-grid">
+          <article class="stat-card accent">
+            <span class="stat-label">Traffic</span>
+            <strong>2.7M</strong>
+            <small>+18.2% from last month</small>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Conversion</span>
+            <strong>4.8%</strong>
+            <small>+1.1% uplift</small>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Bounce</span>
+            <strong>22.4%</strong>
+            <small>Down 3.1%</small>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Revenue</span>
+            <strong>$84.2K</strong>
+            <small>Across 8 regions</small>
+          </article>
+        </section>
+
+        <section class="panel-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Traffic and conversion</h3>
+              <span class="label muted">Last 30 days</span>
+            </div>
+            <div class="mini-chart" aria-label="Traffic chart">
+              <span style="height: 32%"></span>
+              <span style="height: 44%"></span>
+              <span style="height: 49%"></span>
+              <span style="height: 58%"></span>
+              <span style="height: 63%"></span>
+              <span style="height: 75%"></span>
+              <span style="height: 69%"></span>
+              <span style="height: 82%"></span>
+              <span style="height: 88%"></span>
+              <span style="height: 96%"></span>
+              <span style="height: 84%"></span>
+              <span style="height: 100%"></span>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Key drivers</h3>
+            </div>
+            <div class="resource-list">
+              <div>
+                <span>API reliability</span>
+                <div class="progress"><i style="width: 87%"></i></div>
+              </div>
+              <div>
+                <span>Geographic reach</span>
+                <div class="progress"><i style="width: 74%"></i></div>
+              </div>
+              <div>
+                <span>Partner conversions</span>
+                <div class="progress"><i style="width: 68%"></i></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

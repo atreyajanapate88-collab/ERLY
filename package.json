@@ -1,0 +1,9 @@
+{
+  "name": "erly-local-preview",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local ERLY ER:LC community management preview with Discord OAuth",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js"
+  }
+}

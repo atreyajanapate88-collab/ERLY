@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5faf6" />
+    <title>Privacy | ERLY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dashboard-page server-list-page">
+    <header class="server-list-header">
+      <a class="home-brand" href="/" aria-label="ERLY home">
+        <span class="brand-mark">E</span>
+        <span class="brand-name">ERLY</span>
+      </a>
+      <a class="ghost-btn small-btn" href="/">Back to ERLY</a>
+    </header>
+    <main class="server-list-main legal-page-main">
+      <article class="panel legal-page-panel">
+        <p class="top-label">ERLY · Legal</p>
+        <h1>Privacy</h1>
+        <p class="legal-page-note">This is a plain-language overview of the information ERLY uses to provide its features. The operator of the ERLY instance is responsible for its configuration and data.</p>
+
+        <h2>Information ERLY uses</h2>
+        <ul>
+          <li>Discord account details returned during sign-in, such as your user ID, username, display name, avatar, and email when Discord provides it.</li>
+          <li>Discord server names, IDs, icons, permissions, and approximate counts needed to show and verify servers you select.</li>
+          <li>ER:LC server details and settings you submit, including the private server API key, display name, and welcome message.</li>
+          <li>Server activity data needed to deliver configured welcome messages and show delivery status.</li>
+        </ul>
+
+        <h2>How information is used and shared</h2>
+        <ul>
+          <li>Account and server information is used to sign you in, verify access, and provide ERLY management features.</li>
+          <li>ERLY sends requests to Discord and ER:LC services when needed to authenticate, verify servers, or run the features you configure.</li>
+          <li>ERLY does not sell personal information.</li>
+        </ul>
+
+        <h2>Storage and retention</h2>
+        <ul>
+          <li>Sign-in sessions are held in server memory for up to one year. Signing out ends the current session.</li>
+          <li>Saved server settings are encrypted in the ERLY instance's local configuration store and remain until the instance operator removes them.</li>
+          <li>Storage practices may differ for deployments operated by others. Contact the operator of your ERLY instance for data access or deletion requests.</li>
+        </ul>
+
+        <h2>Your choices and third-party services</h2>
+        <p>You can sign out of ERLY, remove its access through your Discord account settings, or ask your server administrator to remove the ERLY bot. Discord and ER:LC services have their own privacy policies and terms.</p>
+        <p>This overview is a starting point for the ERLY preview and is not legal advice. The instance operator should review it and provide any additional contact or jurisdiction details before public deployment.</p>
+      </article>
+    </main>
+    <footer class="legal-footer">
+      <span>© ERLY</span>
+      <nav aria-label="Legal information">
+        <a href="/privacy.html" aria-current="page">Privacy</a>
+        <a href="/terms.html">Terms &amp; Conditions</a>
+      </nav>
+    </footer>
+  </body>
+</html>

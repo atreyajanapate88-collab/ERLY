@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5faf6" />
+    <title>ERLY | ER:LC Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="home-page">
+    <details class="quick-options">
+      <summary>Menu</summary>
+      <nav class="quick-options-menu" aria-label="ERLY menu">
+        <a href="#home">Home</a>
+        <a href="#explore-map">Explore map</a>
+      </nav>
+    </details>
+
+    <main class="home-hero" id="home">
+      <a class="home-brand" href="index.html" aria-label="ERLY home">
+        <span class="brand-mark">E</span>
+        <span class="brand-name">ERLY</span>
+      </a>
+      <h1>Easiest &amp; Better ERLC Management with ERLY Today.</h1>
+      <a class="discord-login-btn" href="/auth/discord">
+        <span class="discord-icon" aria-hidden="true">◉</span>
+        Login through Discord
+      </a>
+      <p class="auth-message" id="auth-message" aria-live="polite" hidden></p>
+      <a class="scroll-cue" href="#explore-map">
+        <span>Scroll to explore</span>
+        <span class="scroll-cue-arrow" aria-hidden="true">↓</span>
+      </a>
+    </main>
+    <section class="explore-map-section" id="explore-map">
+      <button class="explore-map-button" type="button" data-open-map-dialog>
+        <svg class="explore-map-lock" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="10" width="16" height="11" rx="2" stroke="currentColor" stroke-width="2" />
+          <path d="M8 10V7a4 4 0 1 1 8 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <span>Explore ERLC Map</span>
+      </button>
+    </section>
+    <dialog class="map-status-dialog" data-map-dialog aria-labelledby="map-dialog-title">
+      <div class="map-dialog-header">
+        <strong id="map-dialog-title">Under development</strong>
+        <button class="map-dialog-close" type="button" data-close-map-dialog aria-label="Close map">×</button>
+      </div>
+      <p class="map-dialog-message">Map explore is under development. Check back soon!</p>
+    </dialog>
+    <footer class="legal-footer">
+      <span>© ERLY</span>
+      <nav aria-label="Legal information">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms &amp; Conditions</a>
+      </nav>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
