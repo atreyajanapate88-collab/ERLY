@@ -8,10 +8,15 @@ const port = Number(process.env.PORT || 3000);
 const configStorePath = path.join(root, 'server-configs.enc');
 const clientId = process.env.DISCORD_CLIENT_ID || '1570124723147514058';
 const clientSecret = process.env.DISCORD_CLIENT_SECRET;
+const discordOAuthConfigured = Boolean(clientId && clientSecret && clientSecret !== 'replace-with-your-discord-client-secret');
 const storageSecret = process.env.ERLY_ENCRYPTION_SECRET || clientSecret;
 const botToken = process.env.DISCORD_BOT_TOKEN;
 const storageKey = crypto.createHash('sha256').update(String(storageSecret)).digest();
-const redirectUri = process.env.DISCORD_REDIRECT_URI || 'http://localhost:3000/auth/discord/callback';
+const deploymentHost = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
+const defaultRedirectUri = deploymentHost
+  ? `https://${deploymentHost.replace(/^https?:\/\//, '')}/auth/discord/callback`
+  : `http://localhost:${port}/auth/discord/callback`;
+const redirectUri = process.env.DISCORD_REDIRECT_URI || defaultRedirectUri;
 const sessionLifetime = 365 * 24 * 60 * 60;
 const stateLifetime = 10 * 60;
 const welcomePollInterval = 3_000;
@@ -43,9 +48,8 @@ const protectedPages = new Set([
   '/map.html'
 ]);
 
-if (!clientId || !clientSecret || clientSecret === 'replace-with-your-discord-client-secret') {
-  console.error('Discord OAuth is not configured. Set DISCORD_CLIENT_ID and DISCORD_CLIENT_SECRET in .env.');
-  process.exit(1);
+if (!discordOAuthConfigured) {
+  console.error('Discord OAuth is not configured. Set DISCORD_CLIENT_ID and DISCORD_CLIENT_SECRET.');
 }
 
 function cookieValue(request, name) {
@@ -63,11 +67,13 @@ function cookieValue(request, name) {
 function setCookie(response, name, value, options = {}) {
   const parts = [`${name}=${encodeURIComponent(value)}`, `Path=${options.path || '/'}`, 'HttpOnly', 'SameSite=Lax'];
   if (options.maxAge !== undefined) parts.push(`Max-Age=${options.maxAge}`);
+  if (process.env.VERCEL === '1') parts.push('Secure');
   response.setHeader('Set-Cookie', parts.join('; '));
 }
 
 function clearCookie(response, name, cookiePath = '/') {
-  response.setHeader('Set-Cookie', `${name}=; Path=${cookiePath}; HttpOnly; SameSite=Lax; Max-Age=0`);
+  const secure = process.env.VERCEL === '1' ? '; Secure' : '';
+  response.setHeader('Set-Cookie', `${name}=; Path=${cookiePath}; HttpOnly; SameSite=Lax; Max-Age=0${secure}`);
 }
 
 function secureEqual(left, right) {
@@ -933,6 +939,9 @@ const server = http.createServer(async (request, response) => {
   }
 
   if (request.method === 'GET' && url.pathname === '/auth/discord') {
+    if (!discordOAuthConfigured) {
+      return sendText(response, 503, 'Discord sign-in is not configured. Set DISCORD_CLIENT_SECRET in the deployment environment.');
+    }
     const state = crypto.randomBytes(32).toString('base64url');
     setCookie(response, 'erly_oauth_state', state, {
       maxAge: stateLifetime,
@@ -976,6 +985,9 @@ const server = http.createServer(async (request, response) => {
   }
 
   if (request.method === 'GET' && url.pathname === '/auth/discord/callback') {
+    if (!discordOAuthConfigured) {
+      return sendText(response, 503, 'Discord sign-in is not configured. Set DISCORD_CLIENT_SECRET in the deployment environment.');
+    }
     try {
       return await handleDiscordCallback(url, request, response);
     } catch (error) {
@@ -1593,7 +1605,7 @@ async function startServer() {
   for (const config of Object.values(configs)) {
     if (config.welcomeMessage && config.serverApiKey) startWelcomeMonitor(config);
   }
-  server.listen(port, 'localhost', () => {
+  server.listen(port, () => {
     console.log(`ERLY local preview: http://localhost:${port}`);
     console.log(`Discord OAuth callback: ${redirectUri}`);
   });
